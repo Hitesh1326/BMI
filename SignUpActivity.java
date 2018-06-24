@@ -36,6 +36,13 @@ public class SignUpActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String e = etSignUpEmail.getText().toString();
                 String p = etSignUpPassword.getText().toString();
+                
+                if (e.length() == 0 && p.length() == 0) //Validation
+                {
+                    Toast.makeText(SignUpActivity.this, "Please Enter Details", Toast.LENGTH_SHORT).show();
+                    etSignUpEmail.requestFocus();
+                    return;
+                }
                 firebaseAuth.createUserWithEmailAndPassword(e,p).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
