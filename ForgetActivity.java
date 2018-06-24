@@ -27,6 +27,8 @@ public class ForgetActivity extends AppCompatActivity {
         etForgetEmail = (EditText) findViewById(R.id.etForgetEmail);
         btnForgetEmail = (Button) findViewById(R.id.btnForgetEmail);
         firebaseAuth = FirebaseAuth.getInstance();
+        
+     
 
 
 
@@ -34,6 +36,14 @@ public class ForgetActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String e = etForgetEmail.getText().toString();
+                
+                   if (e.length() == 0)   //Validation 
+                {
+                    Toast.makeText(ForgetActivity.this, "Please Enter Email", Toast.LENGTH_SHORT).show();
+                    etForgetEmail.requestFocus();
+                    return;
+                }
+                
                 firebaseAuth.sendPasswordResetEmail(e).addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
