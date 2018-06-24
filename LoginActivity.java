@@ -40,6 +40,14 @@ public class LoginActivity extends AppCompatActivity {
 
                 String e = etEmail.getText().toString();
                 String p = etPassword.getText().toString();
+                
+                if (e.length() == 0 && p.length() == 0 )   //Validation
+                {
+                    Toast.makeText(LoginActivity.this, "Please Enter Details ", Toast.LENGTH_SHORT).show();
+                    etEmail.requestFocus();
+                    return;
+
+                }
 
 
 
