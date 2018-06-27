@@ -28,39 +28,35 @@ public class PersonalActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal);
-
+  //Checking user is logged in or not .
         firebaseAuth = FirebaseAuth.getInstance();
         if (firebaseAuth.getCurrentUser() == null) {
             finish();
             startActivity(new Intent(PersonalActivity.this, LoginActivity.class));
 
         }
-
+   //Binding work
         databaseReference = firebaseDatabase.getInstance().getReference();
-
-
         etName = (EditText) findViewById(R.id.etName);
         etAge = (EditText) findViewById(R.id.etAge);
         etPhone = (EditText) findViewById(R.id.etPhone);
         rgGender = (RadioGroup) findViewById(R.id.rgGender);
         btnNext = (Button) findViewById(R.id.btnNext);
 
-
+//Button Next
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Members();
                 startActivity(new Intent(PersonalActivity.this, BMIActivity.class));
                 finish();
+  }  });
 
 
-
-            }
-        });
-
-
-    }
-
+    }//end of Oncreate
+    
+    
+//One method called Members which is pushing data into data base with the current user id.
     public void Members(){
         String n = etName.getText().toString();
         String a = etAge.getText().toString();
