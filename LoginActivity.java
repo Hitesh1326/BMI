@@ -37,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         
-        //To Check whether the user is logged in or not !
+        //To Check whether the user is logged in or not 
         if (firebaseAuth.getCurrentUser() != null) {
             // User is signed in
             Intent i = new Intent(LoginActivity.this, BMIActivity.class);
