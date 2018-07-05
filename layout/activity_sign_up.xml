@@ -1,37 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_sign_up"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.bmi.hitesh.bmi.SignUpActivity">
-
-    <EditText
-        android:id="@+id/etSignUpEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20sp"
-        android:ems="10"
-        android:hint="Enter Email"
-        android:inputType="textEmailAddress" />
+    tools:context="com.example.shindehitesh.bmi.SignUpActivity">
 
     <EditText
         android:id="@+id/etSignUpPassword"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="15sp"
+        android:layout_alignLeft="@+id/etSignUpEmail"
+        android:layout_alignStart="@+id/etSignUpEmail"
+        android:layout_below="@+id/etSignUpEmail"
+        android:layout_marginTop="17dp"
         android:ems="10"
         android:hint="Enter Password"
         android:inputType="textPassword" />
 
+    <EditText
+        android:id="@+id/etSignUpEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="73dp"
+        android:ems="10"
+        android:hint="Enter Email"
+        android:inputType="textEmailAddress" />
+
     <Button
         android:id="@+id/btnRegister"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/etSignUpPassword"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="26dp"
         android:text="Register" />
-</LinearLayout>
+</RelativeLayout>
