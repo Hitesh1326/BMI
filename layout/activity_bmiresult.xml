@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.bmi.hitesh.bmi.BMIResultActivity">
+    tools:context="com.example.shindehitesh.bmi.BMIResultActivity">
 
     <TextView
         android:id="@+id/tvBMIValue"
@@ -18,7 +18,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="52dp"
         android:text=""
-        android:textSize="20sp" />
+        android:textSize="19sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -74,6 +74,7 @@
         android:layout_marginEnd="42dp"
         android:layout_marginRight="42dp"
         android:text="Share" />
+
 
 
 </RelativeLayout>
