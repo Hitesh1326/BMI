@@ -1,0 +1,39 @@
+package com.example.shindehitesh.bmi;
+
+/**
+ * Created by Hitesh on 03-07-2018.
+ */
+//These is storing bmi value and weight data in firebase.
+public class BmiResult {
+    String res;
+    int w;
+
+    public BmiResult (String res, int w){
+        this.res=res;
+        this.w=w;
+    }
+    @Override
+    public String toString() {
+        return "BMIValue"+ res+"Weight "+w ;
+
+
+    }
+
+
+    public void setW(int w) {
+        this.w = w;
+    }
+
+    public int getW() {
+        return w;
+    }
+
+    public void setRes(String res) {
+        this.res = res;
+
+    }
+
+    public String getRes() {
+        return res;
+    }
+}
