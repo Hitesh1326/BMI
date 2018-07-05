@@ -1,30 +1,35 @@
-package com.bmi.hitesh.bmi;
-
-import java.lang.reflect.Member;
+package com.example.shindehitesh.bmi;
 
 /**
- * Created by Hitesh on 25-06-2018.
+ * Created by Hitesh on 02-07-2018.
  */
-
+//Storing data of members in firebase.
 public class Members {
     int a;
     String p, n, r;
 
-    public Members(int a, String p, String n, String r) {
+    public Members(int a, String p, String n, String r ) {
         this.a = a;
         this.p = p;
         this.n = n;
         this.r = r;
+
+
+
     }
+
+
 
 
     @Override
     public String toString() {
-        return "Members "+ "Name= " + n + ", Age= " + a + ", Phone= "+ p + ",Gender= " + r + '\'';
+        return "Members "+ "Name= " + n + ", Age= " + a + ", Phone= "+ p + ",Gender= " + r ;
 
 
     }
-    Members(){}
+
+
+
 
     public int getA() {
         return a;
