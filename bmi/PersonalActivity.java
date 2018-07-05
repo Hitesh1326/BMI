@@ -1,4 +1,4 @@
-package com.bmi.hitesh.bmi;
+package com.example.shindehitesh.bmi;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -19,18 +19,17 @@ public class PersonalActivity extends AppCompatActivity {
 
     EditText etName,etAge,etPhone;
     RadioGroup rgGender;
-    Button  btnNext;
+    Button btnNext;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
-    FirebaseUser user;
     FirebaseAuth firebaseAuth;
     SharedPreferences sp;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal);
+
 //Checking
         firebaseAuth = FirebaseAuth.getInstance();
         if (firebaseAuth.getCurrentUser() == null) {
@@ -39,17 +38,15 @@ public class PersonalActivity extends AppCompatActivity {
 
         }
 
-        databaseReference = firebaseDatabase.getInstance().getReference();
+        databaseReference = firebaseDatabase.getInstance().getReference("members");
 
-
-//Binding
+        //Binding
         etName = (EditText) findViewById(R.id.etName);
         etAge = (EditText) findViewById(R.id.etAge);
         etPhone = (EditText) findViewById(R.id.etPhone);
         rgGender = (RadioGroup) findViewById(R.id.rgGender);
         btnNext = (Button) findViewById(R.id.btnNext);
         sp = getSharedPreferences("p1", MODE_PRIVATE); //For saving name
-
 
 
         btnNext.setOnClickListener(new View.OnClickListener() {
@@ -85,10 +82,8 @@ public class PersonalActivity extends AppCompatActivity {
 
             }
         });
-
-
     }
-//for firebase
+    //for firebase
     public void Members(){
         String n = etName.getText().toString();
         String a = etAge.getText().toString();
@@ -106,4 +101,5 @@ public class PersonalActivity extends AppCompatActivity {
         databaseReference.child(user.getUid()).setValue(members);
 
     }
+
 }
