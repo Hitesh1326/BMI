@@ -1,4 +1,4 @@
-package com.bmi.hitesh.bmi;
+package com.example.shindehitesh.bmi;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -9,7 +9,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
-public class Welcome extends AppCompatActivity {
+public class WelcomeActivity extends AppCompatActivity {
 
 
     ImageView iv1;
@@ -18,12 +18,9 @@ public class Welcome extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-         requestWindowFeature(Window.FEATURE_NO_TITLE);
+        //Full ScreenView
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-
-
         setContentView(R.layout.activity_welcome);
         getSupportActionBar().hide();
 
@@ -36,7 +33,7 @@ public class Welcome extends AppCompatActivity {
             public void run() {
                 try {
                     Thread.sleep(3000);
-                    startActivity(new Intent(Welcome.this, LoginActivity.class));
+                    startActivity(new Intent(WelcomeActivity.this, LoginActivity.class));
                     finish();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -45,6 +42,8 @@ public class Welcome extends AppCompatActivity {
 
             }
         }).start();
+
+
 
 
 
