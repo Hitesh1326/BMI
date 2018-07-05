@@ -1,4 +1,4 @@
-package com.bmi.hitesh.bmi;
+package com.example.shindehitesh.bmi;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,11 +9,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class BMIResultActivity extends AppCompatActivity {
 
     TextView tvBMIValue,tvUnder,tvNormal,tvOver,tvObese;
     SharedPreferences sp,sp1;
     Button btnShare;
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +35,9 @@ public class BMIResultActivity extends AppCompatActivity {
         sp1 = getSharedPreferences("p2",MODE_PRIVATE);
         btnShare = (Button)findViewById(R.id.btnShare);
         sp = getSharedPreferences("p1",MODE_PRIVATE);
+        databaseReference = firebaseDatabase.getInstance().getReference();
+
+
 
 
 
@@ -35,55 +45,55 @@ public class BMIResultActivity extends AppCompatActivity {
         final String re = String.format("%.02f", bmi_val);
         final String bmishow;
 
-            if (bmi_val<18.5)
-            {
-                tvBMIValue.setText("Your BMI is " + re + "and you are Underweight");
-                tvBMIValue.setTextColor(Color.parseColor("#A71931"));
-                bmishow = "Your BMI is " + re + " and you are Underweight";
+        if (bmi_val<18.5)
+        {
+            tvBMIValue.setText("Your BMI is " + re + "and you are Underweight");
+            tvBMIValue.setTextColor(Color.parseColor("#A71931"));
+            bmishow = "Your BMI is " + re + " and you are Underweight";
 
-                tvUnder.setText("Below 18.5 is Underweight");
-                tvUnder.setTextColor(Color.parseColor("#A71931"));
-                tvNormal.setText("Between 18 to 25 is Normal");
-                tvOver.setText("Between 25 to 30 is Overweight");
-                tvObese.setText("More then 30 is Obese");
+            tvUnder.setText("Below 18.5 is Underweight");
+            tvUnder.setTextColor(Color.parseColor("#A71931"));
+            tvNormal.setText("Between 18 to 25 is Normal");
+            tvOver.setText("Between 25 to 30 is Overweight");
+            tvObese.setText("More then 30 is Obese");
 
-            }
+        }
         else if (bmi_val>=18.5 && bmi_val<=25)
-            {
-                tvBMIValue.setText("Your BMI is " + re + " and you are Normal");
-                tvBMIValue.setTextColor(Color.parseColor("#A71931"));
-                bmishow = "Your BMI is " + re + " and you are Normal";
+        {
+            tvBMIValue.setText("Your BMI is " + re + " and you are Normal");
+            tvBMIValue.setTextColor(Color.parseColor("#A71931"));
+            bmishow = "Your BMI is " + re + " and you are Normal";
 
-                tvUnder.setText("Below 18 is Underweight");
-                tvNormal.setText("Between 18.5 to 25 is Normal");
-                tvNormal.setTextColor(Color.parseColor("#A71931"));
-                tvOver.setText("Between 25 to 30 is Overweight");
-                tvObese.setText("More then 30 is Obese");
-            }
+            tvUnder.setText("Below 18 is Underweight");
+            tvNormal.setText("Between 18.5 to 25 is Normal");
+            tvNormal.setTextColor(Color.parseColor("#A71931"));
+            tvOver.setText("Between 25 to 30 is Overweight");
+            tvObese.setText("More then 30 is Obese");
+        }
         else if (bmi_val>=25.01 && bmi_val<=29.9 )
-            {
-                tvBMIValue.setText("Your BMI is " + re + " and you are Overweight");
-                tvBMIValue.setTextColor(Color.parseColor("#A71931"));
-                bmishow = "Your BMI is " + re + " and you are Overweight";
+        {
+            tvBMIValue.setText("Your BMI is " + re + " and you are Overweight");
+            tvBMIValue.setTextColor(Color.parseColor("#A71931"));
+            bmishow = "Your BMI is " + re + " and you are Overweight";
 
-                tvUnder.setText("Below 18 is Underweight");
-                tvNormal.setText("Between 18 to 25 is Normal");
-                tvOver.setText("Between 25 to 30 is Overweight");
-                tvOver.setTextColor(Color.parseColor("#A71931"));
-                tvObese.setText("More then 30 is Obese");
-            }
+            tvUnder.setText("Below 18 is Underweight");
+            tvNormal.setText("Between 18 to 25 is Normal");
+            tvOver.setText("Between 25 to 30 is Overweight");
+            tvOver.setTextColor(Color.parseColor("#A71931"));
+            tvObese.setText("More then 30 is Obese");
+        }
         else
-            {
-                tvBMIValue.setText("Your BMI is " + re + " and you are Obese");
-                tvBMIValue.setTextColor(Color.parseColor("#A71931"));
-                bmishow = "Your BMI is " + re + " and you are Obese";
+        {
+            tvBMIValue.setText("Your BMI is " + re + " and you are Obese");
+            tvBMIValue.setTextColor(Color.parseColor("#A71931"));
+            bmishow = "Your BMI is " + re + " and you are Obese";
 
-                tvUnder.setText("Below 18 is Underweight");
-                tvNormal.setText("Between 18 to 25 is Normal");
-                tvOver.setText("Between 25 to 30 is Overweight");
-                tvObese.setText("More then 30 is Obese");
-                tvObese.setTextColor(Color.parseColor("#A71931"));
-            }
+            tvUnder.setText("Below 18 is Underweight");
+            tvNormal.setText("Between 18 to 25 is Normal");
+            tvOver.setText("Between 25 to 30 is Overweight");
+            tvObese.setText("More then 30 is Obese");
+            tvObese.setTextColor(Color.parseColor("#A71931"));
+        }
 
         btnShare.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -101,10 +111,6 @@ public class BMIResultActivity extends AppCompatActivity {
                 i.setType("text/plain");
                 i.putExtra(Intent.EXTRA_TEXT, msg);
                 startActivity(i);
-
-
-
-
             }
         });
 
@@ -113,4 +119,5 @@ public class BMIResultActivity extends AppCompatActivity {
 
 
     }
+
 }
