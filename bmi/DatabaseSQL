@@ -1,0 +1,73 @@
+package com.example.shindehitesh.bmi;
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteConstraintException;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+
+/**
+ * Created by Hitesh on 05-07-2018.
+ */
+
+public class DatabaseSQL extends SQLiteOpenHelper{
+    SQLiteDatabase db = this.getReadableDatabase();
+    Context context;
+
+    DatabaseSQL(Context context) {
+        super(context, "ViewHistory", null, 1);
+        this.context = context;
+        db = this.getWritableDatabase();
+    }
+
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+        db.execSQL("CREATE TABLE history(date TEXT,time TEXT,bmi TEXT,weight TEXT)");
+        Log.d("ViewHistory", "Table Created");
+
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db, int i, int i1) {
+
+    }
+    public void addRecord(String date1, String time, String resu, int w){
+        try{
+            ContentValues cv = new ContentValues();
+            cv.put("date",date1);
+            cv.put("time",time);
+            cv.put("bmi",resu);
+            cv.put("weight",w);
+            db.insert("history",null,cv);
+
+            Log.d("ViewHistory", "Records Inserted");
+            //Toast.makeText(context, "Saved", Toast.LENGTH_SHORT).show();
+
+        }
+        catch(SQLiteConstraintException e)
+
+        {
+            Toast.makeText(context, "BMI Value Recorded", Toast.LENGTH_SHORT).show();
+            Log.d("ViewHistory","BMI Value Recorded");
+        }
+    }
+    public ArrayList<String> view()
+    {
+        ArrayList<String> records = new ArrayList<>();
+        Cursor c = db.query("history", null,null,null,null,null,null);
+        while(c.moveToNext())
+        {
+            String rec = "Date: " +c.getString(0) + "\nTime: " +c.getString(1)+"\nBMI: "+c.getString(2) + "\nWeight: " + c.getString(3);
+            records.add(rec);
+
+        }
+        c.close();
+        return records;
+
+    }
+}
