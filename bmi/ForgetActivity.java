@@ -1,4 +1,4 @@
-package com.bmi.hitesh.bmi;
+package com.example.shindehitesh.bmi;
 
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -14,7 +14,6 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class ForgetActivity extends AppCompatActivity {
 
-
     EditText etForgetEmail;
     Button btnForgetEmail;
     FirebaseAuth firebaseAuth;
@@ -27,8 +26,6 @@ public class ForgetActivity extends AppCompatActivity {
         etForgetEmail = (EditText) findViewById(R.id.etForgetEmail);
         btnForgetEmail = (Button) findViewById(R.id.btnForgetEmail);
         firebaseAuth = FirebaseAuth.getInstance();
-
-
 
         btnForgetEmail.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,7 +54,6 @@ public class ForgetActivity extends AppCompatActivity {
 
             }
         });
-
 
     }
 }
